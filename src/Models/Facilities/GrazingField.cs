@@ -2,12 +2,12 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
-
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 50;
+        private int _capacity = 3;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
@@ -18,16 +18,22 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public int GetAnimalCount()
+        {
+            return _animals.Count();
+        }
+
         public void AddResource (IGrazing animal)
         {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
         }
 
         public void AddResource (List<IGrazing> animals) 
         {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            foreach (IGrazing animal in animals)
+            {
+                _animals.Add(animal);
+            }
         }
 
         public override string ToString()

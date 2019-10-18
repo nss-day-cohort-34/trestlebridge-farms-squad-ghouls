@@ -22,7 +22,26 @@ namespace Trestlebridge.Actions {
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ());
 
-            farm.GrazingFields[choice].AddResource(animal);
+            bool atCapacity = true;
+            
+            while (atCapacity == true)
+            {
+                if (farm.GrazingFields[choice - 1].GetAnimalCount() < farm.GrazingFields[choice - 1].Capacity)
+                {
+                    atCapacity = false;
+                    farm.GrazingFields[choice - 1].AddResource(animal);
+                    Console.WriteLine("Animal Added To Facility");
+                }
+                else
+                {
+                    atCapacity = true;
+                    Console.WriteLine("Too many animals. Choose another facility.");
+                    Console.Write ("> ");
+                    choice = Int32.Parse(Console.ReadLine ());
+                }
+            }
+            // else return user back to list of facilities (do this after lunch)
+
 
             /*
                 Couldn't get this to work. Can you?
