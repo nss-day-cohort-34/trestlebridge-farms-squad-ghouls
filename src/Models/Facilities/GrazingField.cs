@@ -7,7 +7,7 @@ using System.Linq;
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 3;
+        private int _capacity = 20;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
@@ -28,7 +28,7 @@ namespace Trestlebridge.Models.Facilities {
             _animals.Add(animal);
         }
 
-        public void AddResource (List<IGrazing> animals) 
+        public void AddResource (List<IGrazing> animals)
         {
             foreach (IGrazing animal in animals)
             {

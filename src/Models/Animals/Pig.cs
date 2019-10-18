@@ -19,5 +19,8 @@ namespace Trestlebridge.Actions
         {
             throw new System.NotImplementedException();
         }
+         public override string ToString () {
+            return $"Pig {this._shortId}. Oink!";
+        }
     }
 }
