@@ -11,7 +11,7 @@ namespace Trestlebridge.Actions {
 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field");
+                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].GetAnimalCount()} animals)");
             }
 
             Console.WriteLine ();
@@ -23,7 +23,7 @@ namespace Trestlebridge.Actions {
             int choice = Int32.Parse(Console.ReadLine ());
 
             bool atCapacity = true;
-            
+
             while (atCapacity == true)
             {
                 if (farm.GrazingFields[choice - 1].GetAnimalCount() < farm.GrazingFields[choice - 1].Capacity)

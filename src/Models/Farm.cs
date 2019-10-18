@@ -11,6 +11,9 @@ namespace Trestlebridge.Models
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
+        public List<DuckHouse> AvailableDuckHouses { get; } = new List<DuckHouse>();
+
+
 
         /*
             This method must specify the correct product interface of the
@@ -39,6 +42,7 @@ namespace Trestlebridge.Models
         }
         public void AddDuckHouse (DuckHouse house)
         {
+            AvailableDuckHouses.Add(house);
             DuckHouses.Add(house);
         }
 
