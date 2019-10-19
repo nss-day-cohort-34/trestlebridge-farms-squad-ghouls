@@ -24,7 +24,7 @@ namespace Trestlebridge.Actions
 
             // How can I output the type of animal chosen here?
 
-            if (farm.DuckHouses.Count() != 0) {
+            if (farm.AvailableDuckHouses.Count() != 0) {
                 Console.WriteLine ($"Place the Duck where?");
                 Console.Write ("> ");
                 int choice = Int32.Parse(Console.ReadLine ());
