@@ -28,24 +28,14 @@ namespace Trestlebridge.Actions
                 Console.WriteLine ($"Place the Duck where?");
                 Console.Write ("> ");
                 int choice = Int32.Parse(Console.ReadLine ());
-                bool atCapacity = true;
-                while (atCapacity == true)
-                {
                     if (farm.DuckHouses[choice - 1].GetDuckCount() < farm.DuckHouses[choice - 1].Capacity)
                     {
-                        atCapacity = false;
                         farm.DuckHouses[choice - 1].AddResource(duck);
                         if (farm.DuckHouses[choice - 1].GetDuckCount() >= farm.DuckHouses[choice -1].Capacity) {
                             farm.AvailableDuckHouses.Remove(farm.DuckHouses[choice - 1]);
                         }
                         Console.WriteLine("Duck Added To Facility");
-                    } else {
-                        atCapacity = true;
-                        Console.WriteLine("Too many Ducks. Choose another facility.");
-                        Console.Write ("> ");
-                        choice = Int32.Parse(Console.ReadLine ());
                     }
-                }
         }
 
 
