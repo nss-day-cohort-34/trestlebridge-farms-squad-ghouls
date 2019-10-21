@@ -35,7 +35,7 @@ namespace Trestlebridge.Actions {
                         if (farm.NaturalFields[choice - 1].GetCount() >= farm.NaturalFields[choice -1].Capacity) {
                             farm.AvailableNaturalFields.Remove(farm.NaturalFields[choice - 1]);
                         }
-                        Console.WriteLine("Plant Added To Facility");
+                        Console.WriteLine("Plant Added To Field");
                     }
         }
 

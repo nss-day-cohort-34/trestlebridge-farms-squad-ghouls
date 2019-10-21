@@ -35,7 +35,7 @@ namespace Trestlebridge.Actions {
                         if (farm.PlowedFields[choice - 1].GetCount() >= farm.PlowedFields[choice -1].Capacity) {
                             farm.AvailablePlowedFields.Remove(farm.PlowedFields[choice - 1]);
                         }
-                        Console.WriteLine("Plant Added To Facility");
+                        Console.WriteLine("Plant Added To Field");
                     }
         }
 
