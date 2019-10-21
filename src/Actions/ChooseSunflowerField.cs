@@ -10,7 +10,7 @@ namespace Trestlebridge.Actions {
     {
         public static void CollectInput (Farm farm, ISeedProducing plant) {
             Console.Clear();
-            if (farm.SunflowerFields.Count() == 0) {
+            if (farm.AvailableSunflowerFields.Count() == 0) {
                 Console.WriteLine("You need to create a Plowed Field or a Natural Field before you can purchase a sunflower.");
             }
 
@@ -36,7 +36,7 @@ namespace Trestlebridge.Actions {
  Console.WriteLine ();
 
 
-            if (farm.SunflowerFields.Count() != 0) {
+            if (farm.AvailableSunflowerFields.Count() != 0) {
                 Console.WriteLine ($"Place the sunflower where?");
                 Console.Write ("> ");
                 int choice = Int32.Parse(Console.ReadLine ());
@@ -44,7 +44,7 @@ namespace Trestlebridge.Actions {
                     {
                         farm.SunflowerFields[choice - 1].AddResource(plant);
                         if (farm.SunflowerFields[choice - 1].GetCount() >= farm.SunflowerFields[choice -1].Capacity) {
-                            farm.AvailablePlowedFields.Remove(farm.PlowedFields[choice - 1]);
+                            farm.AvailableSunflowerFields.Remove(farm.SunflowerFields[choice - 1]);
                         }
                         Console.WriteLine("Plant Added To Facility");
                     }

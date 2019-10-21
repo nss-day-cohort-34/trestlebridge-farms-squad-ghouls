@@ -10,7 +10,7 @@ namespace Trestlebridge.Models
     {
 
         public List<IFacility<ISeedProducing>> SunflowerFields = new List<IFacility<ISeedProducing>>();
-        public List<IFacility<IField>> AvailableSunflowerFields = new List<IFacility<IField>>();
+        public List<IFacility<ISeedProducing>> AvailableSunflowerFields = new List<IFacility<ISeedProducing>>();
 
 
 
@@ -54,13 +54,14 @@ namespace Trestlebridge.Models
             PlowedFields.Add(field);
             AvailablePlowedFields.Add(field);
             SunflowerFields.Add(field);
-
+            AvailableSunflowerFields.Add(field);
 
         }
         public void AddNaturalField (NaturalField field)
         {
             NaturalFields.Add(field);
             AvailableNaturalFields.Add(field);
+            AvailableSunflowerFields.Add(field);
             SunflowerFields.Add(field);
 
         }
