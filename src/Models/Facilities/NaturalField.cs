@@ -5,7 +5,7 @@ using Trestlebridge.Interfaces;
 using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
-    public class NaturalField : IFacility<ICompostProducing>
+    public class NaturalField : IFacility<ICompostProducing>, IField, IFacility<ISeedProducing>
     {
         private int _capacity = 60;
         private Guid _id = Guid.NewGuid();
@@ -21,15 +21,23 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public int GetPlantCount()
-        {
-            return _plants.Count();
+         public int PlantsInRow {
+            get {
+                return _plantsPerRow;
+            }
         }
+
+        public int Rows {
+            get {
+                return _rows;
+            }
+        }
+
 
         public void GroupPlants()
         {
             List<IResource> plants = new List<IResource>();
-            foreach (ICompostProducing plant in _plants)
+            foreach (ICompostProducing plant in _resources)
             {
                 plants.Add((IResource)plant);
             }
@@ -40,16 +48,16 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource (ICompostProducing plant)
+        public void AddResource (IResource plant)
         {
-            _plants.Add(plant);
+            _resources.Add(plant);
         }
 
-        public void AddResource (List<ICompostProducing> plants)
+        public void AddResource (List<IResource> plants)
         {
-            foreach (ICompostProducing plant in plants)
+            foreach (IResource plant in plants)
             {
-                _plants.Add(plant);
+                _resources.Add(plant);
             }
         }
 
@@ -62,6 +70,39 @@ namespace Trestlebridge.Models.Facilities {
             this._plants.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+
+
+        public int GetCount()
+        {
+            return _resources.Count();
+        }
+
+        public void AddResource(ISeedProducing resource)
+        {
+           _resources.Add((IResource)resource);
+        }
+
+        public void AddResource(List<ISeedProducing> resources)
+        {
+             foreach (IResource plant in resources)
+            {
+                _resources.Add(plant);
+            }
+        }
+
+        public void AddResource(ICompostProducing resource)
+        {
+            _resources.Add((IResource)resource);
+        }
+
+        public void AddResource(List<ICompostProducing> resources)
+        {
+             foreach (IResource plant in resources)
+            {
+                _resources.Add(plant);
+            }
         }
     }
 }

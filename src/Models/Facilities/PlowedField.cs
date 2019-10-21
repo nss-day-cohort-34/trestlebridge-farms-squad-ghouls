@@ -5,7 +5,7 @@ using Trestlebridge.Interfaces;
 using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
-    public class PlowedField : IFacility<ISeedProducing>
+    public class PlowedField : IFacility<ISeedProducing>, IField
     {
         private int _capacity = 65;
         private Guid _id = Guid.NewGuid();
@@ -21,10 +21,19 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public int GetPlantCount()
-        {
-            return _plants.Count();
+        public int PlantsInRow {
+            get {
+                return _plantsPerRow;
+            }
         }
+
+        public int Rows {
+            get {
+                return _rows;
+            }
+        }
+
+
 
         public void GroupPlants()
         {
@@ -63,5 +72,13 @@ namespace Trestlebridge.Models.Facilities {
 
             return output.ToString();
         }
+
+
+        public int GetCount()
+        {
+            return _plants.Count();
+        }
+
+
     }
 }

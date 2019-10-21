@@ -17,10 +17,7 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-           public int GetChickenCount()
-        {
-            return _chickens.Count();
-        }
+
 
          private List<Chicken> _chickens = new List<Chicken>();
 
@@ -47,6 +44,11 @@ namespace Trestlebridge.Models.Facilities {
             this._chickens.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+        public int GetCount()
+        {
+            return _chickens.Count();
         }
     }
 }

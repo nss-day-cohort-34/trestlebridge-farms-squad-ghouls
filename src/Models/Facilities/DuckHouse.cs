@@ -18,7 +18,7 @@ namespace Trestlebridge.Models.Facilities
         }
 
         private List<Duck> _ducks = new List<Duck>();
-        public int GetDuckCount()
+        public int GetCount()
         {
             return _ducks.Count();
         }

@@ -19,7 +19,7 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public int GetAnimalCount()
+        public int GetCount()
         {
             return _animals.Count();
         }
