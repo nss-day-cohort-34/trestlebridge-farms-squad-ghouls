@@ -35,7 +35,7 @@ namespace Trestlebridge.Actions {
                         if (farm.GrazingFields[choice - 1].GetCount() >= farm.GrazingFields[choice -1].Capacity) {
                             farm.AvailableGrazingFields.Remove(farm.GrazingFields[choice - 1]);
                         }
-                        Console.WriteLine("Animal Added To Facility");
+                        Console.WriteLine("Animal Added To Grazing Field");
                     }
         }
 

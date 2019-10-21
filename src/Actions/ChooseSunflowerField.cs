@@ -46,7 +46,7 @@ namespace Trestlebridge.Actions {
                         if (farm.SunflowerFields[choice - 1].GetCount() >= farm.SunflowerFields[choice -1].Capacity) {
                             farm.AvailableSunflowerFields.Remove(farm.SunflowerFields[choice - 1]);
                         }
-                        Console.WriteLine("Plant Added To Facility");
+                        Console.WriteLine($"Sunflower Added To {farm.SunflowerFields[choice - 1].GetType().ToString().Split(".")[3].Replace("Field", " Field")} ");
                     }
 
             }

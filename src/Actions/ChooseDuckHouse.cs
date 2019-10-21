@@ -34,7 +34,7 @@ namespace Trestlebridge.Actions
                         if (farm.DuckHouses[choice - 1].GetCount() >= farm.DuckHouses[choice -1].Capacity) {
                             farm.AvailableDuckHouses.Remove(farm.DuckHouses[choice - 1]);
                         }
-                        Console.WriteLine("Duck Added To Facility");
+                        Console.WriteLine("Duck Added To Duck House");
                     }
         }
 
