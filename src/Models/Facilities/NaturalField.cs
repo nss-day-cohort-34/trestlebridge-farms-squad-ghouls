@@ -7,7 +7,7 @@ using System.Linq;
 namespace Trestlebridge.Models.Facilities {
     public class NaturalField : IFacility<ICompostProducing>, IField, IFacility<ISeedProducing>
     {
-        private int _capacity = 2;
+        private int _capacity = 60;
         private Guid _id = Guid.NewGuid();
 
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
