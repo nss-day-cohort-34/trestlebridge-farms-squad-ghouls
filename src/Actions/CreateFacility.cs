@@ -35,6 +35,7 @@ namespace Trestlebridge.Actions {
                     break;
                 case 4:
                     farm.AddDuckHouse(new DuckHouse());
+
                     Console.WriteLine("A New Duck house Has Been Added");
                     Console.WriteLine();
                     Console.WriteLine($"You Have {farm.DuckHouses.Count()} Duck House(s)");

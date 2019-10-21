@@ -9,7 +9,7 @@ namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IFacility<Chicken>
     {
 
-        private double _capacity = 15;
+        private double _capacity = 2;
         private Guid _id = Guid.NewGuid();
           public double Capacity {
             get {
