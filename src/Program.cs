@@ -23,7 +23,7 @@ namespace Trestlebridge
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.White;
-			Console.BackgroundColor = ConsoleColor.DarkMagenta;
+			Console.BackgroundColor = ConsoleColor.DarkBlue;
 
             Farm Trestlebridge = new Farm();
 
@@ -50,6 +50,11 @@ namespace Trestlebridge
                 {
                     DisplayBanner();
                     PurchaseStock.CollectInput(Trestlebridge);
+                }
+                else if (option == "3")
+                {
+                    DisplayBanner();
+                    PurchasePlants.CollectInput(Trestlebridge);
                 }
                 else if (option == "4")
                 {

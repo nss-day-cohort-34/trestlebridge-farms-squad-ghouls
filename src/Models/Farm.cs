@@ -8,6 +8,12 @@ namespace Trestlebridge.Models
 {
     public class Farm
     {
+
+        public List<IFacility<ISeedProducing>> SunflowerFields = new List<IFacility<ISeedProducing>>();
+        public List<IFacility<ISeedProducing>> AvailableSunflowerFields = new List<IFacility<ISeedProducing>>();
+
+
+
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
         public List<GrazingField> AvailableGrazingFields { get; } = new List<GrazingField>();
         public List<PlowedField> PlowedFields { get; } = new List<PlowedField>();
@@ -47,11 +53,17 @@ namespace Trestlebridge.Models
         {
             PlowedFields.Add(field);
             AvailablePlowedFields.Add(field);
+            SunflowerFields.Add(field);
+            AvailableSunflowerFields.Add(field);
+
         }
         public void AddNaturalField (NaturalField field)
         {
             NaturalFields.Add(field);
             AvailableNaturalFields.Add(field);
+            AvailableSunflowerFields.Add(field);
+            SunflowerFields.Add(field);
+
         }
         public void AddChickenHouse (ChickenHouse house)
         {

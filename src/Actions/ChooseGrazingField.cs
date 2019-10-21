@@ -5,7 +5,7 @@ using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions {
-     internal class ChooseGrazingField
+     public class ChooseGrazingField
     {
         public static void CollectInput (Farm farm, IGrazing animal) {
             Console.Clear();
@@ -15,8 +15,8 @@ namespace Trestlebridge.Actions {
 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                if (farm.GrazingFields[i].GetAnimalCount() < farm.GrazingFields[i].Capacity) {
-                    Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].GetAnimalCount()} animals)");
+                if (farm.GrazingFields[i].GetCount() < farm.GrazingFields[i].Capacity) {
+                    Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].GetCount()} animals)");
                     farm.GrazingFields[i].GroupAnimals();
                 }
             }
@@ -29,10 +29,10 @@ namespace Trestlebridge.Actions {
                 Console.WriteLine ($"Place the animal where?");
                 Console.Write ("> ");
                 int choice = Int32.Parse(Console.ReadLine ());
-                    if (farm.GrazingFields[choice - 1].GetAnimalCount() < farm.GrazingFields[choice - 1].Capacity)
+                    if (farm.GrazingFields[choice - 1].GetCount() < farm.GrazingFields[choice - 1].Capacity)
                     {
                         farm.GrazingFields[choice - 1].AddResource(animal);
-                        if (farm.GrazingFields[choice - 1].GetAnimalCount() >= farm.GrazingFields[choice -1].Capacity) {
+                        if (farm.GrazingFields[choice - 1].GetCount() >= farm.GrazingFields[choice -1].Capacity) {
                             farm.AvailableGrazingFields.Remove(farm.GrazingFields[choice - 1]);
                         }
                         Console.WriteLine("Animal Added To Facility");

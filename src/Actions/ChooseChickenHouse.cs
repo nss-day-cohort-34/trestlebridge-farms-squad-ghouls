@@ -5,7 +5,7 @@ using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions
 {
-    internal class ChooseChickenHouse
+    public class ChooseChickenHouse
     {
         public static void CollectInput (Farm farm, Chicken chicken) {
             Console.Clear();
@@ -15,8 +15,8 @@ namespace Trestlebridge.Actions
 
             for (int i = 0; i < farm.ChickenHouses.Count; i++)
             {
-                if (farm.ChickenHouses[i].GetChickenCount() < farm.ChickenHouses[i].Capacity) {
-                    Console.WriteLine ($"{i + 1}. Chicken House ({farm.ChickenHouses[i].GetChickenCount()} Chickens)");
+                if (farm.ChickenHouses[i].GetCount() < farm.ChickenHouses[i].Capacity) {
+                    Console.WriteLine ($"{i + 1}. Chicken House ({farm.ChickenHouses[i].GetCount()} Chickens)");
                 }
             }
 
@@ -28,10 +28,10 @@ namespace Trestlebridge.Actions
                 Console.WriteLine ($"Place the Chicken where?");
                 Console.Write ("> ");
                 int choice = Int32.Parse(Console.ReadLine ());
-                    if (farm.ChickenHouses[choice - 1].GetChickenCount() < farm.ChickenHouses[choice - 1].Capacity)
+                    if (farm.ChickenHouses[choice - 1].GetCount() < farm.ChickenHouses[choice - 1].Capacity)
                     {
                         farm.ChickenHouses[choice - 1].AddResource(chicken);
-                        if (farm.ChickenHouses[choice - 1].GetChickenCount() >= farm.ChickenHouses[choice -1].Capacity) {
+                        if (farm.ChickenHouses[choice - 1].GetCount() >= farm.ChickenHouses[choice -1].Capacity) {
                             farm.AvailableChickenHouses.Remove(farm.ChickenHouses[choice - 1]);
                         }
                         Console.WriteLine("Chicken Added To Facility");

@@ -7,6 +7,8 @@ namespace Trestlebridge.Interfaces
     {
         double Capacity { get; }
 
+        int GetCount();
+
         void AddResource (T resource);
         void AddResource (List<T> resources);
     }
