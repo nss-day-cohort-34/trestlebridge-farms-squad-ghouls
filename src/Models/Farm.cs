@@ -77,6 +77,10 @@ namespace Trestlebridge.Models
 
         public override string ToString()
         {
+            double TotalMeat = 0;
+            foreach (GrazingField gf in GrazingFields) {
+                TotalMeat += gf.Meat;
+            }
             StringBuilder report = new StringBuilder();
 
             GrazingFields.ForEach(gf => report.Append(gf));
@@ -84,6 +88,8 @@ namespace Trestlebridge.Models
             DuckHouses.ForEach(dh => report.Append(dh));
             NaturalFields.ForEach(dh => report.Append(dh));
             PlowedFields.ForEach(dh => report.Append(dh));
+
+            report.Append($"Total Meat Produced: {TotalMeat}kg");
 
 
             return report.ToString();

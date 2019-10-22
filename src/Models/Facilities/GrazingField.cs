@@ -14,6 +14,8 @@ namespace Trestlebridge.Models.Facilities
         private List<IGrazing> _animals = new List<IGrazing>();
         private List<IResource> _resources = new List<IResource>();
 
+        public double Meat { get; set; }
+
         public double Capacity
         {
             get
@@ -65,6 +67,7 @@ namespace Trestlebridge.Models.Facilities
                     for (int i = 0; i < int.Parse(quantity); i++)
                     {
                         _animals.Remove(_animals[0]);
+                        Meat += 18.25;
                     }
                     Console.WriteLine();
                     Console.WriteLine($"{int.Parse(quantity) * 18.25}kg of cow meat have been produced");
@@ -92,6 +95,11 @@ namespace Trestlebridge.Models.Facilities
             {
                 _animals.Add(animal);
             }
+        }
+
+        public string MeatString()
+        {
+            return $"{Meat}kg of Meat Produced";
         }
 
         public override string ToString()
