@@ -9,8 +9,7 @@ namespace Trestlebridge.Models
     public class Farm
     {
 
-        public List<IFacility<ISeedProducing>> SunflowerFields = new List<IFacility<ISeedProducing>>();
-        public List<IFacility<ISeedProducing>> AvailableSunflowerFields = new List<IFacility<ISeedProducing>>();
+
 
 
 
@@ -53,16 +52,14 @@ namespace Trestlebridge.Models
         {
             PlowedFields.Add(field);
             AvailablePlowedFields.Add(field);
-            SunflowerFields.Add(field);
-            AvailableSunflowerFields.Add(field);
+
 
         }
         public void AddNaturalField (NaturalField field)
         {
             NaturalFields.Add(field);
             AvailableNaturalFields.Add(field);
-            AvailableSunflowerFields.Add(field);
-            SunflowerFields.Add(field);
+
 
         }
         public void AddChickenHouse (ChickenHouse house)
@@ -83,6 +80,9 @@ namespace Trestlebridge.Models
             GrazingFields.ForEach(gf => report.Append(gf));
             ChickenHouses.ForEach(ch => report.Append(ch));
             DuckHouses.ForEach(dh => report.Append(dh));
+            NaturalFields.ForEach(dh => report.Append(dh));
+            PlowedFields.ForEach(dh => report.Append(dh));
+
 
             return report.ToString();
         }

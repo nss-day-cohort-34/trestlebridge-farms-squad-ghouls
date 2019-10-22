@@ -21,30 +21,32 @@ namespace Trestlebridge.Actions {
             Console.Write ("> ");
             string choice = Console.ReadLine ();
 
-            switch (Int32.Parse(choice))
+            switch (choice)
             {
-                case 1:
+                case "1":
                     ChooseGrazingField.CollectInput(farm, new Cow());
                     break;
-                case 2:
+                case "2":
                     ChooseGrazingField.CollectInput(farm, new Pig());
                     break;
-                case 3:
+                case "3":
                     ChooseGrazingField.CollectInput(farm, new Goat());
                     break;
-                case 4:
+                case "4":
                     ChooseGrazingField.CollectInput(farm, new Ostrich());
                     break;
-                case 5:
+                case "5":
                     ChooseGrazingField.CollectInput(farm, new Sheep());
                     break;
-                case 6:
+                case "6":
                     ChooseChickenHouse.CollectInput(farm, new Chicken());
                     break;
-                case 7:
+                case "7":
                     ChooseDuckHouse.CollectInput(farm, new Duck());
                     break;
                 default:
+                    Console.WriteLine($"Invalid option");
+                    Console.WriteLine();
                     break;
             }
         }

@@ -7,7 +7,7 @@ using System.Linq;
 namespace Trestlebridge.Models.Facilities {
     public class NaturalField : IFacility<ICompostProducing>, IField, IFacility<ISeedProducing>
     {
-        private int _capacity = 60;
+        private int _capacity = 2;
         private Guid _id = Guid.NewGuid();
 
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
@@ -66,8 +66,8 @@ namespace Trestlebridge.Models.Facilities {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Natural Field {shortId} has {this._plants.Count} plants\n");
-            this._plants.ForEach(a => output.Append($"   {a}\n"));
+            output.Append($"Natural Field {shortId} has {this._resources.Count} plants\n");
+            this._resources.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
         }
