@@ -20,18 +20,44 @@ namespace Trestlebridge.Actions
                 }
                 Console.WriteLine();
 
-                    if (farm.GrazingFields.Count() != 0)
+            }
+            if (farm.GrazingFields.Count() != 0)
+            {
+                try
+                {
+                    Console.WriteLine($"Which Facility has the animals you want to process?");
+                    Console.Write("> ");
+                    string choice = Console.ReadLine();
+                    while (choice != "")
                     {
-                        Console.WriteLine($"Which Facility has the animals you want to process?");
-                        Console.Write("> ");
-                        int choice = Int32.Parse(Console.ReadLine());
-                        if (choice <= farm.GrazingFields.Count()){
+                        if (int.Parse(choice) <= farm.GrazingFields.Count())
+                        {
                             Console.Clear();
-                            farm.GrazingFields[choice-1].GetAnimals(farm.GrazingFields[choice-1]);
+                            farm.GrazingFields[int.Parse(choice) - 1].GetAnimals(farm.GrazingFields[int.Parse(choice) - 1]);
 
                         }
-                    }
+                        
+                        Console.Clear();
+                        for (int i = 0; i < farm.GrazingFields.Count; i++)
+                        {
+                            if (farm.GrazingFields[i].GetCount() < farm.GrazingFields[i].Capacity)
+                            {
+                                Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].GetCount()} animals)");
 
+                            }
+                            Console.WriteLine();
+
+                        }
+                        Console.WriteLine($"Which Facility has the animals you want to process?");
+                        Console.Write("> ");
+                        choice = Console.ReadLine();
+                    }
                 }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+            }
+        }
     }
-    }}
+}
