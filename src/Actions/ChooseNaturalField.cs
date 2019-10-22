@@ -4,40 +4,60 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Plants;
 
-namespace Trestlebridge.Actions {
-     public class ChooseNaturalField
+namespace Trestlebridge.Actions
+{
+    public class ChooseNaturalField
     {
-        public static void CollectInput (Farm farm, ICompostProducing plant) {
+        public static void CollectInput(Farm farm, ICompostProducing plant)
+        {
             Console.Clear();
-            if (farm.AvailableNaturalFields.Count() == 0) {
+            if (farm.AvailableNaturalFields.Count() == 0)
+            {
                 Console.WriteLine("You need to create a Natural Field before you can purchase a plant.");
             }
 
             for (int i = 0; i < farm.NaturalFields.Count; i++)
             {
-                if (farm.NaturalFields[i].GetCount() < farm.NaturalFields[i].Capacity) {
-                    Console.WriteLine ($"{i + 1}. Natural Field ({farm.NaturalFields[i].GetCount()} plants)");
+                if (farm.NaturalFields[i].GetCount() < farm.NaturalFields[i].Capacity)
+                {
+                    Console.WriteLine($"{i + 1}. Natural Field ({farm.NaturalFields[i].GetCount()} plants)");
                     farm.NaturalFields[i].GroupPlants();
                 }
             }
 
-            Console.WriteLine ();
+            Console.WriteLine();
 
             // How can I output the type of animal chosen here?
+            try
+            {
 
-            if (farm.AvailableNaturalFields.Count() != 0) {
-                Console.WriteLine ($"Place the plant where?");
-                Console.Write ("> ");
-                int choice = Int32.Parse(Console.ReadLine ());
+
+                if (farm.AvailableNaturalFields.Count() != 0)
+                {
+                    Console.WriteLine($"Place the plant where?");
+                    Console.Write("> ");
+                    int choice = Int32.Parse(Console.ReadLine());
                     if (farm.NaturalFields[choice - 1].GetCount() < farm.NaturalFields[choice - 1].Capacity)
                     {
                         farm.NaturalFields[choice - 1].AddResource(plant);
-                        if (farm.NaturalFields[choice - 1].GetCount() >= farm.NaturalFields[choice -1].Capacity) {
+                        if (farm.NaturalFields[choice - 1].GetCount() >= farm.NaturalFields[choice - 1].Capacity)
+                        {
                             farm.AvailableNaturalFields.Remove(farm.NaturalFields[choice - 1]);
                         }
                         Console.WriteLine("Plant Added To Field");
                     }
-        }
+                }
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine($"Invalid option");
+                Console.WriteLine();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                Console.WriteLine($"Invalid Number");
+                Console.WriteLine();
+            }
 
 
 
