@@ -18,17 +18,21 @@ namespace Trestlebridge.Actions {
             Console.Write ("> ");
             string choice = Console.ReadLine ();
 
-            switch (Int32.Parse(choice))
+            switch (choice)
             {
-                case 1:
+                case "1":
                     ChoosePlowedField.CollectInput(farm, new Sesame());
                     break;
-                case 2:
+                case "2":
                     ChooseSunflowerField.CollectInput(farm, new Sunflower());
 
                     break;
-                case 3:
+                case "3":
                     ChooseNaturalField.CollectInput(farm, new Wildflower());
+                    break;
+                default:
+                   Console.WriteLine($"Invalid option");
+                    Console.WriteLine();
                     break;
             }
         }
