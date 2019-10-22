@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using System.Linq;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class GrazingField : IFacility<IGrazing>
     {
         private int _capacity = 20;
@@ -13,8 +14,10 @@ namespace Trestlebridge.Models.Facilities {
         private List<IGrazing> _animals = new List<IGrazing>();
         private List<IResource> _resources = new List<IResource>();
 
-        public double Capacity {
-            get {
+        public double Capacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
@@ -37,13 +40,41 @@ namespace Trestlebridge.Models.Facilities {
                 Console.WriteLine($"  {animal.type} Count: {animal.number}");
             }
         }
+        public void GetAnimals(GrazingField grazingField)
+        {
+            List<IResource> animals = new List<IResource>();
+            foreach (IGrazing animal in _animals)
+            {
+                animals.Add((IResource)animal);
+            }
+            var groupedAnimals = animals.GroupBy(a => a.Type).Select(a => new { type = a.Key, number = a.Count() }).ToList();
+            int counter = 0;
+            foreach (var animal in groupedAnimals)
+            {
+                counter++;
+                Console.WriteLine($"{counter}. {animal.type} Count: {animal.number}");
+            }
+            Console.WriteLine("Which resource should we process?");
+           string choice = Console.ReadLine();
+           if (int.Parse(choice) <= groupedAnimals.Count()){
+               Console.WriteLine($"How many cows should be processed?");
+              string quantity = Console.ReadLine();
+              if (int.Parse(quantity) <= groupedAnimals[int.Parse(choice) -1].number){
+                  for(int i= 0; i < int.Parse(quantity); i++ ){
+                     _animals.Remove(_animals[0]);
+                  }
 
-        public void AddResource (IGrazing animal)
+              }
+
+           }
+        }
+
+        public void AddResource(IGrazing animal)
         {
             _animals.Add(animal);
         }
 
-        public void AddResource (List<IGrazing> animals)
+        public void AddResource(List<IGrazing> animals)
         {
             foreach (IGrazing animal in animals)
             {
