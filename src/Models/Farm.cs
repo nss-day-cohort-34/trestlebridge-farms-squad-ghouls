@@ -24,6 +24,8 @@ namespace Trestlebridge.Models
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
         public List<DuckHouse> AvailableDuckHouses { get; } = new List<DuckHouse>();
 
+    
+
 
 
         /*

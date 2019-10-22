@@ -55,18 +55,30 @@ namespace Trestlebridge.Models.Facilities
                 Console.WriteLine($"{counter}. {animal.type} Count: {animal.number}");
             }
             Console.WriteLine("Which resource should we process?");
-           string choice = Console.ReadLine();
-           if (int.Parse(choice) <= groupedAnimals.Count()){
-               Console.WriteLine($"How many cows should be processed?");
-              string quantity = Console.ReadLine();
-              if (int.Parse(quantity) <= groupedAnimals[int.Parse(choice) -1].number){
-                  for(int i= 0; i < int.Parse(quantity); i++ ){
-                     _animals.Remove(_animals[0]);
-                  }
-
-              }
-
-           }
+            string choice = Console.ReadLine();
+            if (int.Parse(choice) <= groupedAnimals.Count())
+            {
+                Console.WriteLine($"How many cows should be processed?");
+                string quantity = Console.ReadLine();
+                if (int.Parse(quantity) <= groupedAnimals[int.Parse(choice) - 1].number && int.Parse(quantity) <= 7)
+                {
+                    for (int i = 0; i < int.Parse(quantity); i++)
+                    {
+                        _animals.Remove(_animals[0]);
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine($"{int.Parse(quantity) * 18.25}kg of cow meat have been produced");
+                    Console.ReadLine();
+                }
+                else if (int.Parse(quantity) <= groupedAnimals[int.Parse(choice) - 1].number)
+                {
+                    Console.WriteLine("Equipment can only handle up to 7 cows");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+            }
         }
 
         public void AddResource(IGrazing animal)
